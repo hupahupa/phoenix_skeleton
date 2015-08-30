@@ -20,6 +20,14 @@ Working Tips
 * Work with migration
 //TODO
 
+
+Working with JS & CSS
+====================
+This project has default brunch to manage assets
+
+* Compile:
+	+ node_modules/brunch/bin/brunch build
+
 Reference Packages
 ====================
 *	ELixir: http://elixir-lang.org/getting-started/introduction.html

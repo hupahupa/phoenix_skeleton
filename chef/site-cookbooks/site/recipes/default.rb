@@ -86,6 +86,18 @@ template "#{site_dir}/app/config/db.json" do
     mode "644"
 end
 
+execute "Install node dependencies" do
+    user app_user
+    environment({
+        "HOME" => "/home/#{app_user}",
+        "LANGUAGE" => "en_US.UTF-8",
+        "LANG" => "en_US.UTF-8",
+        "LC_ALL" => "en_US.UTF-8",
+    })
+    cwd "#{site_dir}/app"
+    command "npm install"
+end
+
 execute "Get all elixir dependencies" do
     user app_user
     environment({
@@ -130,7 +142,6 @@ end
 nginx_site "default" do
     action :disable
 end
-
 
 template "/etc/logrotate.d/#{site_name}" do
     source "logrotate.erb"
