@@ -1,0 +1,41 @@
+<%- site = node[:site] -%>
+<%- site_name = site[:site_name] -%>
+<%- server_names = site[:server_names] -%>
+<%- log_dir = site[:log_dir] -%>
+<%- site_dir = site[:site_dir] -%>
+<%- server_aliases = site[:server_aliases] -%>
+server {
+
+    # TODO:
+    # Add SSL support
+    listen              80;
+    server_name         <%= server_names.join(' ') %>;
+    root                <%= site_dir %>;
+    access_log          <%= log_dir %>/access.log;
+    error_log           <%= log_dir %>/error.log;
+
+
+    location / {
+        try_files $uri/index.html $uri @elixir_app;
+    }
+
+
+    location ~ /(\.|Vagrantfile|chef) {
+        # Protect code files
+        return 444;
+    }
+
+    <%- if site[:blocked_keywords] -%>
+    location ~* (<%= site[:blocked_keywords].join("|") %>) {
+        return 444;
+    }
+    <%- end -%>
+
+    location @elixir_app {
+        proxy_set_header Host $http_host;
+        if (!-f $request_filename) {
+          proxy_pass http://127.0.0.1:4000;
+          break;
+        }
+    }
+}

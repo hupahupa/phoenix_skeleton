@@ -1,0 +1,7 @@
+#!/bin/sh
+<% site_dir = node[:site][:site_dir] -%>
+<% env = node[:site][:env] -%>
+
+<% if env == 'local' -%>
+sudo restart <%= node[:site][:site_name] %>
+<% end -%>

@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+bin_dir="$(cd "$(dirname "$0")/.."; pwd)"
+cd "$bin_dir/app"
+
+exec mix phoenix.server >> <%= node[:site][:log_dir] %>/app.log

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd <%= node[:site][:site_dir] %>/app
+echo Y | mix deps.get
+echo Y | mix compile
+sudo restart <%= node[:site][:site_name] %>

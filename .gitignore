@@ -1,0 +1,19 @@
+*.pyc
+*.swp
+*~
+.DS_Store
+/.cache
+/.vagrant
+/logs
+/scripts
+/config/db.json
+# Mix artifacts
+/app/_build
+/app/deps/
+/app/mix.lock
+/*.ez
+
+# Generate on crash by the VM
+erl_crash.dump
+/app/priv/static/resource
+/app/priv/static/images/uploads

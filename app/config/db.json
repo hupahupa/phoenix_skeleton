@@ -1,0 +1,6 @@
+{
+    "database": "site",
+    "host"    : "localhost",
+    "user"    : "site",
+    "password": "vagrant"
+}
