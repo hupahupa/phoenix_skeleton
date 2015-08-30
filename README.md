@@ -1,9 +1,9 @@
 INSTALLATION
 ====================
 
-1.  Clone project: `git clone git@github.com:hupahupa/site.git --recursive $project_name`
-2.  Change to site folder: `cd site`
-3.  Search and replace all `site` to `project_name`
+1.  Clone project: `git clone git@github.com:hupahupa/phoenix_skeleton.git --recursive`
+2.  Change to site folder: `cd phoenix_skeleton`
+3.  Search and replace all `phoenix_skeleton` to `project_name`
 4.  Run the vagrant: `vagrant up`
 5.  Browse at: localhost:9500
 
